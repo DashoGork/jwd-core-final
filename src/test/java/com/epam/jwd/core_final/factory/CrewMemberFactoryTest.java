@@ -10,6 +10,6 @@ public class CrewMemberFactoryTest {
     public void create() {
         EntityFactory factory = new CrewMemberFactory();
         CrewMember d= (CrewMember) factory.create("1,Ann,2");
-        d.toString();
+
     }
 }

@@ -1,9 +1,14 @@
 package com.epam.jwd.core_final.exception;
 
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class UnknownEntityException extends RuntimeException {
 
     private final String entityName;
     private final Object[] args;
+    static Logger logger = LogManager.getLogger();
 
     public UnknownEntityException(String entityName) {
         super();
@@ -19,10 +24,12 @@ public class UnknownEntityException extends RuntimeException {
 
 
     @Override
-    public String getMessage() {
+    public String getMessage() {//logging!
+
         System.out.println("Unknown entity "+entityName+" "+args.toString());
         // todo
         // you should use entityName, args (if necessary)
+
         return null;
     }
 }

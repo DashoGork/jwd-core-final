@@ -67,4 +67,8 @@ public final class ApplicationProperties {
                 ", dateTimeFormat='" + dateTimeFormat + '\'' +
                 '}';
     }
+
+    public String getOutputRootDir() {
+        return outputRootDir;
+    }
 }

@@ -1,5 +1,6 @@
 package com.epam.jwd.core_final.domain;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -13,6 +14,26 @@ public class Spaceship extends AbstractBaseEntity {
     private Map<Role,Short> crew;
     private Long flightDistance;
     private boolean isReadyForNextMissions=true;
+
+    public Spaceship(String name,Long flightDistance,Map<Role, Short> crew ) {
+        super.setName(name);
+        this.crew = crew;
+        this.flightDistance = flightDistance;
+    }
+
+    /**
+     for strings like {int:int,int:int,int:int,int:int}
+     * */
+    public static Map<Role,Short> stringToMap(String string){
+        Map<Role,Short> roleShortMap=new HashMap<>();
+        string=string.substring(1,string.length()-1);
+        String subString[]=string.split(",");
+        for(String each:subString){
+            String numbers[]=each.split(":");
+            roleShortMap.put(Role.resolveRoleById(Integer.valueOf(numbers[0])),Short.valueOf(numbers[1]));
+        }
+        return roleShortMap;
+    }
 
     @Override
     public Long getId() {
