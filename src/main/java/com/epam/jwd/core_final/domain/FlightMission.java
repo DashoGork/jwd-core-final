@@ -1,5 +1,8 @@
 package com.epam.jwd.core_final.domain;
 
+import java.time.LocalDate;
+import java.util.List;
+
 /**
  * Expected fields:
  * <p>
@@ -13,4 +16,23 @@ package com.epam.jwd.core_final.domain;
  */
 public class FlightMission extends AbstractBaseEntity {
     // todo
+
+    private String name;
+    private LocalDate startDate;
+    private LocalDate endDate;
+    private Long distance;
+    private Spaceship assignedSpaceShift;
+    private List<CrewMember> assignedCrew;
+    private MissionResult missionResult;
+
+
+    @Override
+    public Long getId() {
+        return super.getId();
+    }
+
+    @Override
+    public String getName() {
+        return super.getName();
+    }
 }
