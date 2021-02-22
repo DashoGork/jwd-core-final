@@ -14,7 +14,7 @@ import java.util.Collection;
 
 public class Main {
 
-    public static void main(String[] args) throws InvalidStateException {
+    public static void main(String[] args)  {
 //        EntityFactory factory = new CrewMemberFactory();
 //        ArrayList<CrewMember>crewMembers=new ArrayList<>();
 //        for(String stringWithCrewMembers: CrewMemberReaderUtil.loadCrewMember()){
@@ -24,7 +24,11 @@ public class Main {
 //            System.out.println(cr.toString());
 //        }
         NassaContext nassaContext=new NassaContext();
-        nassaContext.init();
+        try {
+            nassaContext.init();
+        } catch (InvalidStateException e) {
+            e.printStackTrace();
+        }
         //Application.start();
     }
 }

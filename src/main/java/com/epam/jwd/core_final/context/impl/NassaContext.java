@@ -34,17 +34,22 @@ public class NassaContext implements ApplicationContext {
      * @throws InvalidStateException
      */
     @Override
-    public void init() throws InvalidStateException {
+    public void init() throws InvalidStateException {//Exptions!!
         factory1=new CrewMemberFactory();
         for(String stringWithCrewMembers: CrewMemberReaderUtil.loadCrewMember()){
             crewMembers.add((CrewMember) factory1.create(stringWithCrewMembers));
         }
-
         factory2= new SpaceshipFactory();
         for(String stringWithSpaceships: SpaceshipsReaderUtil.loadSpaceships()){
             spaceships.add((Spaceship) factory2.create(stringWithSpaceships));
         }
+    }
 
-        //throw new InvalidStateException();
+    public  Collection<CrewMember> getCrewMembers() {
+        return crewMembers;
+    }
+
+    public Collection<Spaceship> getSpaceships() {
+        return spaceships;
     }
 }

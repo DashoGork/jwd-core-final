@@ -25,10 +25,6 @@ public class SpaceshipsReaderUtil {
                 IOException e){
             e.printStackTrace();
         }
-        for(String each: subStringInformation){
-            System.out.println(each);
-        }
-
         return subStringInformation;
     }
 

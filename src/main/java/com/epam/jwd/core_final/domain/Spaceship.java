@@ -35,6 +35,7 @@ public class Spaceship extends AbstractBaseEntity {
         return roleShortMap;
     }
 
+
     @Override
     public Long getId() {
         return super.getId();
@@ -43,5 +44,14 @@ public class Spaceship extends AbstractBaseEntity {
     @Override
     public String getName() {
         return super.getName();
+    }
+
+    @Override
+    public String toString() {
+        return "Spaceship{" +
+                "crew=" + crew +
+                ", flightDistance=" + flightDistance +
+                ", isReadyForNextMissions=" + isReadyForNextMissions +
+                '}';
     }
 }

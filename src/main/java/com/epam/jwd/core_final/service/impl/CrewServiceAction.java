@@ -1,20 +1,31 @@
 package com.epam.jwd.core_final.service.impl;
 
+import com.epam.jwd.core_final.context.impl.NassaContext;
 import com.epam.jwd.core_final.criteria.Criteria;
 import com.epam.jwd.core_final.domain.CrewMember;
 import com.epam.jwd.core_final.service.CrewService;
 
+import java.sql.Array;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 public class CrewServiceAction implements CrewService {
+    private CrewServiceAction crewServiceAction;
+    private NassaContext nassaContext = new NassaContext();
+
     private CrewServiceAction(){}
 
-
+    public CrewServiceAction getInt(){
+        if(crewServiceAction==null){
+            crewServiceAction= new CrewServiceAction();
+        }
+        return crewServiceAction;
+    }
 
     @Override
     public List<CrewMember> findAllCrewMembers() {
-        return null;
+        return (List)nassaContext.getCrewMembers();
     }
 
     @Override
