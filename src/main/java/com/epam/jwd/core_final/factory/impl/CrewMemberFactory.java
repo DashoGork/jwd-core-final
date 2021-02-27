@@ -18,4 +18,9 @@ public class CrewMemberFactory implements EntityFactory<CrewMember> {//Exception
         }
         return null;
     }
+
+    public CrewMember create(CrewMember crewMember){
+        CrewMember nCrewmemeber=new CrewMember(crewMember);
+        return (nCrewmemeber);
+    }
 }

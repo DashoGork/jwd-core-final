@@ -1,5 +1,8 @@
 package com.epam.jwd.core_final.domain;
 
+import com.epam.jwd.core_final.criteria.CrewMemberCriteria;
+import com.epam.jwd.core_final.criteria.SpaceshipCriteria;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,6 +38,27 @@ public class Spaceship extends AbstractBaseEntity {
         return roleShortMap;
     }
 
+    public Boolean equalse(SpaceshipCriteria criteria){
+        int expected=0;
+        int real=0;
+        if(criteria.getFlightDistance()!=null){
+            expected++;
+            if(this.getFlightDistance().equals(criteria.getFlightDistance()))
+            real++;
+        }
+        if(criteria.getCrew()!=null){
+            expected++;
+            if(this.getCrew().equals(criteria.getCrew()))
+                real++;
+        }
+        if(criteria.getReadyForNextMissions()!=null){
+            expected++;
+            if(this.isReadyForNextMissions().equals(criteria.getReadyForNextMissions()))
+                real++;
+
+        }
+        return (expected==real);
+    }
 
     @Override
     public Long getId() {
@@ -53,5 +77,18 @@ public class Spaceship extends AbstractBaseEntity {
                 ", flightDistance=" + flightDistance +
                 ", isReadyForNextMissions=" + isReadyForNextMissions +
                 '}';
+    }
+
+
+    public Map<Role, Short> getCrew() {
+        return crew;
+    }
+
+    public Long getFlightDistance() {
+        return flightDistance;
+    }
+
+    public Boolean isReadyForNextMissions() {
+        return isReadyForNextMissions;
     }
 }
