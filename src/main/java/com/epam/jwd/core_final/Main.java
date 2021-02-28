@@ -23,7 +23,12 @@ public class Main {
 //        for(CrewMember cr:crewMembers){
 //            System.out.println(cr.toString());
 //        }
-
+        NassaContext nassaContext=NassaContext.getInt();
+        try {
+            nassaContext.init();
+        } catch (InvalidStateException e) {
+            e.printStackTrace();
+        }
         //Application.start();
     }
 }
