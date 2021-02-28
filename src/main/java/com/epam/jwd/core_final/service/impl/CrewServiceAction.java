@@ -11,19 +11,20 @@ import com.epam.jwd.core_final.factory.impl.CrewMemberFactory;
 import com.epam.jwd.core_final.service.CrewService;
 import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class CrewServiceAction implements CrewService {
-    private CrewServiceAction crewServiceAction;
-    private NassaContext nassaContext = new NassaContext();
+    private static CrewServiceAction crewServiceAction;
+    private NassaContext nassaContext = NassaContext.getInt();
     private CrewMemberFactory factory = new CrewMemberFactory();
 
 
     private CrewServiceAction(){}
 
-    public CrewServiceAction getInt(){
+    public static CrewServiceAction getInt(){
         if(crewServiceAction==null){
             crewServiceAction= new CrewServiceAction();
         }
@@ -38,7 +39,8 @@ public class CrewServiceAction implements CrewService {
     @Override
     public List<CrewMember> findAllCrewMembersByCriteria(CrewMemberCriteria criteria) {
         List<CrewMember> crewMemberByCriteria=new ArrayList<>();
-        crewMemberByCriteria=findAllCrewMembers().stream().filter(crewMember -> crewMember.equalse(criteria)).collect(Collectors.toList());
+        List<CrewMember> crewMemberByCriteria1=findAllCrewMembers();
+        crewMemberByCriteria=findAllCrewMembers().stream().filter(crewMember -> crewMember.equalse(criteria)==true).collect(Collectors.toList());
         return crewMemberByCriteria;
     }
 
@@ -51,9 +53,10 @@ public class CrewServiceAction implements CrewService {
 
     @Override
     public CrewMember updateCrewMemberDetails(CrewMember crewMember) {//!
-        nassaContext.getCrewMembers().stream().filter(crewMember1 -> crewMember1.getName().equals(crewMember.getName()))
+        Arrays.stream(nassaContext.getCrewMembers().stream().filter(crewMember1 -> crewMember1.getName().equals(crewMember.getName())==true)
                 .peek(crewMember1 -> crewMember1.setRank(crewMember.getRank()))
-                .peek(crewMember1 -> crewMember1.setRole(crewMember.getRole())).toArray();
+                .peek(crewMember1 -> crewMember1.setRole(crewMember.getRole()))
+        .peek(crewMember1->crewMember1.setReadyForNextMissions(crewMember.getReadyForNextMissions())).toArray());
         return ( null);
     }
 

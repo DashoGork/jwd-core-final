@@ -24,6 +24,13 @@ public class Spaceship extends AbstractBaseEntity {
         this.flightDistance = flightDistance;
     }
 
+    public Spaceship(Spaceship spaceship){
+        super.setName(spaceship.getName());
+        this.flightDistance=spaceship.flightDistance;
+        this.crew=spaceship.crew;
+        this.isReadyForNextMissions=spaceship.isReadyForNextMissions;
+    }
+
     /**
      for strings like {int:int,int:int,int:int,int:int}
      * */
@@ -91,4 +98,18 @@ public class Spaceship extends AbstractBaseEntity {
     public Boolean isReadyForNextMissions() {
         return isReadyForNextMissions;
     }
+
+    public void setCrew(Map<Role, Short> crew) {
+        this.crew = crew;
+    }
+
+    public void setFlightDistance(Long flightDistance) {
+        this.flightDistance = flightDistance;
+    }
+
+    public void setReadyForNextMissions(boolean readyForNextMissions) {
+        isReadyForNextMissions = readyForNextMissions;
+    }
+
+
 }

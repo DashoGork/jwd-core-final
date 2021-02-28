@@ -14,4 +14,9 @@ public class SpaceshipFactory implements EntityFactory {
         }
         return null;
     }
+
+    public Spaceship create(Spaceship spaceship){
+        Spaceship newSpaceship=new Spaceship(spaceship);
+        return (newSpaceship);
+    }
 }

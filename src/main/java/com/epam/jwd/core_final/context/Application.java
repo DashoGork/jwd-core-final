@@ -9,7 +9,7 @@ public interface Application {
 
     static ApplicationMenu start() throws InvalidStateException {
         final Supplier<ApplicationContext> applicationContextSupplier = null; // todo
-        final NassaContext nassaContext = new NassaContext();
+        final NassaContext nassaContext = NassaContext.getInt();
 
         nassaContext.init();
         return applicationContextSupplier::get;

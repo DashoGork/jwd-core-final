@@ -16,6 +16,13 @@ import java.util.Collection;
 
 // todo
 public class NassaContext implements ApplicationContext {
+    private static NassaContext nassaContext;
+    private NassaContext(){}
+    public static NassaContext getInt(){
+        if(nassaContext==null)
+            nassaContext=new NassaContext();
+        return nassaContext;
+    }
 
     // no getters/setters for them
     private Collection<CrewMember> crewMembers = new ArrayList<>();
@@ -50,6 +57,7 @@ public class NassaContext implements ApplicationContext {
     }
 
     public Collection<Spaceship> getSpaceships() {
+
         return spaceships;
     }
 }
