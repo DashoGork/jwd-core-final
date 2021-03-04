@@ -50,7 +50,7 @@ public class Spaceship extends AbstractBaseEntity {
         int real=0;
         if(criteria.getFlightDistance()!=null){
             expected++;
-            if(this.getFlightDistance().equals(criteria.getFlightDistance()))
+            if(this.getFlightDistance().equals(criteria.getFlightDistance()) | criteria.getFlightDistance()<this.getFlightDistance())
             real++;
         }
         if(criteria.getCrew()!=null){

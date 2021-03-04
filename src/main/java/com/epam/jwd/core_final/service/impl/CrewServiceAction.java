@@ -61,14 +61,14 @@ public class CrewServiceAction implements CrewService {
     }
 
     @Override
-    public void assignCrewMemberOnMission(CrewMember crewMember) throws UnasignedCrewMemberException {//!//&
+    public void assignCrewMemberOnMission(CrewMember crewMember) throws UnasignedCrewMemberException {//!//& в файл!!
         boolean unasigned =nassaContext.getCrewMembers().stream()
                 .filter(crewMember1 -> crewMember1.getName()
                         .equals(crewMember.getName()))
                 .anyMatch(crewMember1 -> crewMember1.getReadyForNextMissions().equals(false));
         try{
             if(unasigned) throw new UnasignedCrewMemberException();
-            nassaContext.getCrewMembers().stream().filter(crewMember1 -> crewMember1.getName().equals(crewMember.getName())).forEach(crewMember1 -> crewMember1.setReadyForNextMissions(true));
+            nassaContext.getCrewMembers().stream().filter(crewMember1 -> crewMember1.getName().equals(crewMember.getName())).forEach(crewMember1 -> crewMember1.setReadyForNextMissions(false));
         }catch (UnasignedCrewMemberException e){
 
         }

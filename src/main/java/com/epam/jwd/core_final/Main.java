@@ -1,5 +1,7 @@
 package com.epam.jwd.core_final;
 
+import com.epam.jwd.core_final.context.Application;
+import com.epam.jwd.core_final.context.impl.Menu;
 import com.epam.jwd.core_final.context.impl.NassaContext;
 import com.epam.jwd.core_final.domain.CrewMember;
 import com.epam.jwd.core_final.domain.Spaceship;
@@ -15,20 +17,15 @@ import java.util.Collection;
 public class Main {
 
     public static void main(String[] args)  {
-//        EntityFactory factory = new CrewMemberFactory();
-//        ArrayList<CrewMember>crewMembers=new ArrayList<>();
-//        for(String stringWithCrewMembers: CrewMemberReaderUtil.loadCrewMember()){
-//            crewMembers.add((CrewMember) factory.create(stringWithCrewMembers));
-//        }
-//        for(CrewMember cr:crewMembers){
-//            System.out.println(cr.toString());
-//        }
-        NassaContext nassaContext=NassaContext.getInt();
+
         try {
-            nassaContext.init();
+            Application.start();
         } catch (InvalidStateException e) {
             e.printStackTrace();
         }
-        //Application.start();
+
+        Menu menu = new Menu();
+        int i=menu.printAvailableOptions();
+        menu.handleUserInput(i);
     }
 }

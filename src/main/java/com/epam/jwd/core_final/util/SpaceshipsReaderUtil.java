@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class SpaceshipsReaderUtil {
+
+
     public static ArrayList<String> loadSpaceships(){
         ArrayList<String> subStringInformation=new ArrayList<>();
         try {

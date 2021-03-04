@@ -1,10 +1,7 @@
 package com.epam.jwd.core_final.context.impl;
 
 import com.epam.jwd.core_final.context.ApplicationContext;
-import com.epam.jwd.core_final.domain.BaseEntity;
-import com.epam.jwd.core_final.domain.CrewMember;
-import com.epam.jwd.core_final.domain.Planet;
-import com.epam.jwd.core_final.domain.Spaceship;
+import com.epam.jwd.core_final.domain.*;
 import com.epam.jwd.core_final.exception.InvalidStateException;
 import com.epam.jwd.core_final.factory.EntityFactory;
 import com.epam.jwd.core_final.factory.impl.CrewMemberFactory;
@@ -16,6 +13,7 @@ import com.epam.jwd.core_final.util.SpaceshipsReaderUtil;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 // todo
 public class NassaContext implements ApplicationContext {
@@ -31,6 +29,7 @@ public class NassaContext implements ApplicationContext {
     private Collection<CrewMember> crewMembers = new ArrayList<>();
     private Collection<Spaceship> spaceships = new ArrayList<>();
     private Collection<Planet> planetMap = new ArrayList<>();
+    private Collection<FlightMission> flightMissions=new ArrayList<>();
     private static EntityFactory factory1;
     private static EntityFactory factory2;
     private static EntityFactory factory3;
@@ -60,7 +59,10 @@ public class NassaContext implements ApplicationContext {
         for(String stringWithPlanets: PlanetReaderUtil.loadPlanet()){
             planetMap.add((Planet) factory3.create(stringWithPlanets));
         }
-
+        planetMap=planetMap.stream().filter(planet -> planet.getName().equals("NULL")==false).collect(Collectors.toList());
+        for(Planet pl:planetMap){
+            System.out.println(pl.toString());
+        }
     }
 
     public  Collection<CrewMember> getCrewMembers() {
@@ -68,7 +70,10 @@ public class NassaContext implements ApplicationContext {
     }
 
     public Collection<Spaceship> getSpaceships() {
-
         return spaceships;
     }
+
+    public Collection<Planet> getPlanetMap(){return planetMap;}
+
+    public Collection<FlightMission> getFlightMissions(){return flightMissions;}
 }

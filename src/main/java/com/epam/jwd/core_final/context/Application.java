@@ -10,8 +10,8 @@ public interface Application {
     static ApplicationMenu start() throws InvalidStateException {
         final Supplier<ApplicationContext> applicationContextSupplier = null; // todo
         final NassaContext nassaContext = NassaContext.getInt();
-
         nassaContext.init();
-        return applicationContextSupplier::get;
+return null;
+       // return applicationContextSupplier::get;
     }
 }

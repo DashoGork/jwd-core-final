@@ -24,13 +24,11 @@ import static java.util.Arrays.stream;
 public class SpaceshipServiceAction implements SpaceshipService {
     private NassaContext nassaContext = NassaContext.getInt();
     private SpaceshipFactory factory = new SpaceshipFactory();
-    private SpaceshipServiceAction spaceshipServiceAction;
+    private static SpaceshipServiceAction spaceshipServiceAction;
 
-    private SpaceshipServiceAction(){
-        spaceshipServiceAction=new SpaceshipServiceAction();
-    }
+    private SpaceshipServiceAction(){ }
 
-    public SpaceshipServiceAction getInt(){
+    public static SpaceshipServiceAction getInt(){
         if(spaceshipServiceAction==null)
             spaceshipServiceAction=new SpaceshipServiceAction();
         return spaceshipServiceAction;
@@ -50,7 +48,8 @@ public class SpaceshipServiceAction implements SpaceshipService {
 
     @Override
     public Optional<Spaceship> findSpaceshipByCriteria(SpaceshipCriteria criteria) {
-        return findAllSpaceships().stream().filter(spaceship -> spaceship.equalse(criteria)).findFirst();
+
+        return (findAllSpaceships().stream().filter(spaceship -> spaceship.equalse(criteria)).findFirst());
     }
 
     @Override
@@ -69,7 +68,7 @@ public class SpaceshipServiceAction implements SpaceshipService {
                 .anyMatch(spaceship -> spaceship.isReadyForNextMissions().equals(false));
         try{
             if(unasigned) throw new UnasignedSpaceshipException();
-            nassaContext.getSpaceships().stream().filter(spaceship -> spaceship.getName().equals(crewMember.getName())).forEach(spaceship -> spaceship.setReadyForNextMissions(true));
+            nassaContext.getSpaceships().stream().filter(spaceship -> spaceship.getName().equals(crewMember.getName())).forEach(spaceship -> spaceship.setReadyForNextMissions(false));
         }catch (UnasignedCrewMemberException e){
 
         }

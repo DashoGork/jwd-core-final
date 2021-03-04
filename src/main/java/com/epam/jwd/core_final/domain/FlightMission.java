@@ -1,5 +1,7 @@
 package com.epam.jwd.core_final.domain;
 
+import com.epam.jwd.core_final.criteria.FlightMissionCriteria;
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -44,6 +46,72 @@ public class FlightMission extends AbstractBaseEntity {
         this.to = to;
     }
 
+    public FlightMission(FlightMission fl) {
+        this.name = fl.name;
+        this.startDate = fl.startDate;
+        this.endDate = fl.endDate;
+        this.distance = fl.distance;
+        this.assignedSpaceShift = fl.assignedSpaceShift;
+        this.assignedCrew = fl.assignedCrew;
+        this.missionResult = fl.missionResult;
+        this.from = fl.from;
+        this.to = fl.to;
+    }
+
+
+    public Boolean equalse(FlightMissionCriteria flightMissionCriteria){
+        int expected=0;
+        int real=0;
+
+        if(flightMissionCriteria.getMissionResult()!=null){
+            expected++;
+            if(this.getMissionResult().equals(flightMissionCriteria.getMissionResult()))
+                real++;
+        }
+        if(flightMissionCriteria.getTo()!=null){
+            expected++;
+            if(this.getTo().equals(flightMissionCriteria.getTo()))
+                real++;
+        }
+        if(flightMissionCriteria.getFrom()!=null){
+            expected++;
+            if(this.getFrom().equals(flightMissionCriteria.getFrom()))
+                real++;
+        }
+        if(flightMissionCriteria.getDistance()!=null){
+            expected++;
+            if(this.getDistance().equals(flightMissionCriteria.getDistance()))
+                real++;
+        }
+        if(flightMissionCriteria.getAssignedCrew()!=null){
+            expected++;
+            if(this.getAssignedCrew().equals(flightMissionCriteria.getAssignedCrew()))
+                real++;
+        }
+        if(flightMissionCriteria.getEndDate()!=null){
+            expected++;
+            if(this.getEndDate().equals(flightMissionCriteria.getEndDate()))
+                real++;
+        }
+        if(flightMissionCriteria.getStartDate()!=null){
+            expected++;
+            if(this.getStartDate().equals(flightMissionCriteria.getStartDate()))
+                real++;
+        }
+        if(flightMissionCriteria.getName()!=null){
+            expected++;
+            if(this.getName().equals(flightMissionCriteria.getName()))
+                real++;
+        }
+        if(flightMissionCriteria.getAssignedSpaceShift()!=null){
+            expected++;
+            if(this.getAssignedSpaceShift().equals(flightMissionCriteria.getAssignedSpaceShift()))
+                real++;
+        }
+        return (expected==real);
+
+    }
+
     @Override
     public Long getId() {
         return super.getId();
@@ -52,5 +120,52 @@ public class FlightMission extends AbstractBaseEntity {
     @Override
     public String getName() {
         return super.getName();
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public Long getDistance() {
+        return distance;
+    }
+
+    public Spaceship getAssignedSpaceShift() {
+        return assignedSpaceShift;
+    }
+
+    public List<CrewMember> getAssignedCrew() {
+        return assignedCrew;
+    }
+
+    public MissionResult getMissionResult() {
+        return missionResult;
+    }
+
+    public Planet getFrom() {
+        return from;
+    }
+
+    public Planet getTo() {
+        return to;
+    }
+
+    @Override
+    public String toString() {
+        return "FlightMission{" +
+                "name='" + name + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", distance=" + distance +
+                ", assignedSpaceShift=" + assignedSpaceShift +
+                ", assignedCrew=" + assignedCrew +
+                ", missionResult=" + missionResult +
+                ", from=" + from +
+                ", to=" + to +
+                '}';
     }
 }
