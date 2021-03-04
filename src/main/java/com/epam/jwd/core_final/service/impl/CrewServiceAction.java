@@ -9,6 +9,8 @@ import com.epam.jwd.core_final.exception.UnasignedCrewMemberException;
 import com.epam.jwd.core_final.factory.EntityFactory;
 import com.epam.jwd.core_final.factory.impl.CrewMemberFactory;
 import com.epam.jwd.core_final.service.CrewService;
+import com.epam.jwd.core_final.util.CrewMemberReaderUtil;
+
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -87,6 +89,11 @@ public class CrewServiceAction implements CrewService {
         finally {
            return newCrewMember;
        }
+    }
+
+    public boolean deleteCrewMemeber(CrewMember crewMember){
+        String linesFromFile[]= CrewMemberReaderUtil.loadCrewMember();
 
     }
+
 }
