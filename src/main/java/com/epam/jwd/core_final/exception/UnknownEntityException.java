@@ -25,11 +25,9 @@ public class UnknownEntityException extends RuntimeException {
 
     @Override
     public String getMessage() {//logging!
-
-        System.out.println("Unknown entity "+entityName+" "+args.toString());
         // todo
         // you should use entityName, args (if necessary)
-
+        logger.error("Unknown entity "+entityName+" "+args.toString());
         return null;
     }
 }

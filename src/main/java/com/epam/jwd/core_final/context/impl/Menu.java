@@ -37,6 +37,7 @@ public class Menu implements ApplicationMenu {
                 "5.Delete crew member\n " +
                 "6. Exit");
         while(choise==0){
+
             try {
                 choise=scanner.nextInt();
             }catch (Exception e){
@@ -51,13 +52,16 @@ public class Menu implements ApplicationMenu {
     public Object handleUserInput(int choise) {
         boolean exit=false;
         while (!exit){
-        switch (choise){
-            case 1:for(CrewMember cr:nassaContext.getCrewMembers())
-                System.out.println(cr.toString());
+
+
+            switch (choise){
+
+                case 1:for(CrewMember cr:nassaContext.getCrewMembers())
+                    System.out.println(cr.toString());
                 break;
 
-            case 2:for(Spaceship sp:nassaContext.getSpaceships())
-                System.out.println(sp.toString());
+                case 2:for(Spaceship sp:nassaContext.getSpaceships())
+                    System.out.println(sp.toString());
                 break;
 
             case 3:for(Planet pl:nassaContext.getPlanetMap())
@@ -151,9 +155,14 @@ public class Menu implements ApplicationMenu {
                 }
                 break;
 
-            case 5:{}
-            case 6:exit=true;
-        }
+                case 5:{}
+                case 6:exit=true;
+                default:choise=printAvailableOptions();
+
+            }
+            if(choise==6) exit=true;
+            choise=printAvailableOptions();
+            if(choise==6) exit=true;
         }
 
         return null;

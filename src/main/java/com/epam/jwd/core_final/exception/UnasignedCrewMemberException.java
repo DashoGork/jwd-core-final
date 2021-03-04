@@ -9,7 +9,7 @@ public class UnasignedCrewMemberException extends RuntimeException implements Su
     static Logger logger = LogManager.getLogger();
 
     public UnasignedCrewMemberException() {
-        System.out.println("This crew memeber cann't be assigned on this mission");
+        logger.error("This crew memeber cann't be assigned on this mission");
     }
 
     @Override

@@ -60,9 +60,7 @@ public class NassaContext implements ApplicationContext {
             planetMap.add((Planet) factory3.create(stringWithPlanets));
         }
         planetMap=planetMap.stream().filter(planet -> planet.getName().equals("NULL")==false).collect(Collectors.toList());
-        for(Planet pl:planetMap){
-            System.out.println(pl.toString());
-        }
+
     }
 
     public  Collection<CrewMember> getCrewMembers() {
