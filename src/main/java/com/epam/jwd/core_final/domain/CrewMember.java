@@ -21,6 +21,10 @@ public class CrewMember extends AbstractBaseEntity {
         this.rank = rank;
     }
 
+    public CrewMember (){
+        return;
+    }
+
     public CrewMember(CrewMember crewMember){
         super.setName(crewMember.getName());
         this.role=crewMember.role;

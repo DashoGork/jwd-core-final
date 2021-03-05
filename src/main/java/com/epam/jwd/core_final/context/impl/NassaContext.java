@@ -48,6 +48,7 @@ public class NassaContext implements ApplicationContext {
     public void init() throws InvalidStateException {//Exptions!!
 
         factory1=new CrewMemberFactory();
+        crewMembers.clear();
         for(String stringWithCrewMembers: CrewMemberReaderUtil.loadCrewMember()){
             crewMembers.add((CrewMember) factory1.create(stringWithCrewMembers));
         }
@@ -61,6 +62,13 @@ public class NassaContext implements ApplicationContext {
         }
         planetMap=planetMap.stream().filter(planet -> planet.getName().equals("NULL")==false).collect(Collectors.toList());
 
+    }
+
+    public void initCrewMembers() throws InvalidStateException{
+        crewMembers.clear();
+        for(String stringWithCrewMembers: CrewMemberReaderUtil.loadCrewMember()){
+            crewMembers.add((CrewMember) factory1.create(stringWithCrewMembers));
+        }
     }
 
     public  Collection<CrewMember> getCrewMembers() {

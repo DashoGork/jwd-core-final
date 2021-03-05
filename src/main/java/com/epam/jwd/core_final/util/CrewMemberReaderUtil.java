@@ -7,10 +7,12 @@ public final class CrewMemberReaderUtil {
     }
 
     public static String[] loadCrewMember(){
-       // String fileName=ApplicationProperties.getInstance().getCrewFileName();
+       // String fileName=ApplicationProperties.getInstance().getCrewFileName(); "C:\\_work\\crew"
+        //"C:\\jwd-core-final-master\\jwd-core-final-master\\" +
+        //                    "src\\main\\resources\\input\\crew"
         String[] subStringInformation=null;
         try {
-            File fileCrewMember=new File("C:\\jwd-core-final-master\\jwd-core-final-master\\src\\main\\resources\\input\\crew");
+            File fileCrewMember=new File("C:\\_work\\crew");
             FileReader fileReader = new FileReader(fileCrewMember);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             bufferedReader.readLine();

@@ -71,4 +71,8 @@ public final class ApplicationProperties {
     public String getOutputRootDir() {
         return outputRootDir;
     }
+
+    public int getFileRefreshRate(){
+        return fileRefreshRate;
+    }
 }

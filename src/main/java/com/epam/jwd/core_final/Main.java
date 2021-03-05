@@ -2,21 +2,18 @@ package com.epam.jwd.core_final;
 
 import com.epam.jwd.core_final.context.Application;
 import com.epam.jwd.core_final.context.impl.Menu;
-import com.epam.jwd.core_final.context.impl.NassaContext;
-import com.epam.jwd.core_final.domain.CrewMember;
-import com.epam.jwd.core_final.domain.Spaceship;
 import com.epam.jwd.core_final.exception.InvalidStateException;
-import com.epam.jwd.core_final.factory.EntityFactory;
-import com.epam.jwd.core_final.factory.impl.CrewMemberFactory;
-import com.epam.jwd.core_final.util.CrewMemberReaderUtil;
-import com.epam.jwd.core_final.util.SpaceshipsReaderUtil;
+import com.epam.jwd.core_final.refreshTimerTask.RefreshTimerTask;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Timer;
 
 public class Main {
 
     public static void main(String[] args)  {
+        Timer timer=new Timer();
+        RefreshTimerTask refreshTimerTask=new RefreshTimerTask();
+
+        timer.schedule(refreshTimerTask,6000, 60000);
 
         try {
             Application.start();

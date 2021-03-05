@@ -158,7 +158,6 @@ public class Menu implements ApplicationMenu {
                 break;
 
                 case 5:
-                    scanner.nextLine();
                     System.out.println("Enter name of CrewMemmer");
                     String name=scanner.nextLine();
                     List <CrewMember> crewMemberList =crewServiceAction.findAllCrewMembers();
@@ -169,6 +168,7 @@ public class Menu implements ApplicationMenu {
                             crewMemberToDelete=crewMemberFactory.create(cr);
                             System.out.println("This crewMember was deleted: "
                                     + crewServiceAction.deleteCrewMemeber(crewMemberToDelete));
+                            break;
                         }
                     }
                     break;
