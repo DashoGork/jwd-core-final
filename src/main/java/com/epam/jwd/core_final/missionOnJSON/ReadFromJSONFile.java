@@ -6,7 +6,7 @@ import java.io.FileReader;
 
 public class ReadFromJSONFile {
 
-    public static void readJsonSimpleDemo() throws Exception {
+    public static void readJsonSimple() throws Exception {
         FileReader reader = new FileReader("output.json");
         JSONParser jsonParser = new JSONParser();
         System.out.println(jsonParser.parse(reader));

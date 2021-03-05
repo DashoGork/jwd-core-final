@@ -174,7 +174,7 @@ public class Menu implements ApplicationMenu {
 
                 case 6:
                     try {
-                        ReadFromJSONFile.readJsonSimpleDemo();
+                        ReadFromJSONFile.readJsonSimple();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
