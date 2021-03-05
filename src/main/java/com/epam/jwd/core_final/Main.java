@@ -12,7 +12,6 @@ public class Main {
     public static void main(String[] args)  {
         Timer timer=new Timer();
         RefreshTimerTask refreshTimerTask=new RefreshTimerTask();
-
         timer.schedule(refreshTimerTask,6000, 60000);
 
         try {

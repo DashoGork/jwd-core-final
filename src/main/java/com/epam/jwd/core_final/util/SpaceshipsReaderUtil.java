@@ -12,7 +12,7 @@ public class SpaceshipsReaderUtil {
     public static ArrayList<String> loadSpaceships(){
         ArrayList<String> subStringInformation=new ArrayList<>();
         try {
-            File fileSpaceships=new File("C:\\jwd-core-final-master\\jwd-core-final-master\\src\\main\\resources\\input\\spaceships");
+            File fileSpaceships=new File("C:\\spaceships");
             FileReader fileReader = new FileReader(fileSpaceships);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             bufferedReader.readLine();

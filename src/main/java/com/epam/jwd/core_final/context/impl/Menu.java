@@ -6,7 +6,6 @@ import com.epam.jwd.core_final.criteria.CrewMemberCriteria;
 import com.epam.jwd.core_final.criteria.SpaceshipCriteria;
 import com.epam.jwd.core_final.domain.*;
 import com.epam.jwd.core_final.exception.UnasignedCrewMemberException;
-import com.epam.jwd.core_final.exception.UnasignedSpaceshipException;
 import com.epam.jwd.core_final.factory.impl.CrewMemberFactory;
 import com.epam.jwd.core_final.service.impl.CrewServiceAction;
 import com.epam.jwd.core_final.service.impl.SpacemapServiceAction;
@@ -16,7 +15,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
+
 
 public class Menu implements ApplicationMenu {
     private Scanner scanner=new Scanner(System.in);
@@ -39,7 +38,6 @@ public class Menu implements ApplicationMenu {
                 "5.Delete crew member\n " +
                 "6. Exit");
         while(choise==0){
-
             try {
                 choise=scanner.nextInt();
             }catch (Exception e){
@@ -54,10 +52,7 @@ public class Menu implements ApplicationMenu {
     public Object handleUserInput(int choise) {
         boolean exit=false;
         while (!exit){
-
-
             switch (choise){
-
                 case 1:for(CrewMember cr:nassaContext.getCrewMembers())
                     System.out.println(cr.toString());
                 break;

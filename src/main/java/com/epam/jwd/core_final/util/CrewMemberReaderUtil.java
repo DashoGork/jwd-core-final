@@ -7,9 +7,6 @@ public final class CrewMemberReaderUtil {
     }
 
     public static String[] loadCrewMember(){
-       // String fileName=ApplicationProperties.getInstance().getCrewFileName(); "C:\\_work\\crew"
-        //"C:\\jwd-core-final-master\\jwd-core-final-master\\" +
-        //                    "src\\main\\resources\\input\\crew"
         String[] subStringInformation=null;
         try {
             File fileCrewMember=new File("C:\\_work\\crew");
@@ -21,7 +18,6 @@ public final class CrewMemberReaderUtil {
         }catch (IOException e){
             e.printStackTrace();
         }
-
         return subStringInformation;
     }
 }

@@ -25,7 +25,7 @@ public final class PropertyReaderUtil {
     public static void loadProperties() {
         InputStream iStream = null;
         try {
-            iStream = new FileInputStream("C:\\jwd-core-final-master\\jwd-core-final-master\\src\\main\\resources\\application.properties");
+            iStream = new FileInputStream("C:\\application.properties");
             properties.load(iStream);
         } catch (IOException e) {
             e.printStackTrace();
