@@ -7,6 +7,7 @@ import com.epam.jwd.core_final.criteria.SpaceshipCriteria;
 import com.epam.jwd.core_final.domain.*;
 import com.epam.jwd.core_final.exception.UnasignedCrewMemberException;
 import com.epam.jwd.core_final.exception.UnasignedSpaceshipException;
+import com.epam.jwd.core_final.factory.impl.CrewMemberFactory;
 import com.epam.jwd.core_final.service.impl.CrewServiceAction;
 import com.epam.jwd.core_final.service.impl.SpacemapServiceAction;
 import com.epam.jwd.core_final.service.impl.SpaceshipServiceAction;
@@ -20,6 +21,7 @@ import java.util.stream.Collectors;
 public class Menu implements ApplicationMenu {
     private Scanner scanner=new Scanner(System.in);
     private NassaContext nassaContext=NassaContext.getInt();
+    private CrewServiceAction crewServiceAction=CrewServiceAction.getInt();
 
 
     @Override
@@ -30,7 +32,7 @@ public class Menu implements ApplicationMenu {
     @Override
     public int printAvailableOptions() {
         int choise=0;
-        System.out.println("You can do several things:/n 1.See all Crew Members/n " +
+        System.out.println("You can do several things:\n 1.See all Crew Members\n " +
                 "2.See all ships\n" +
                 " 3. See all planets\n " +
                 "4. Make new mission\n " +
@@ -155,7 +157,21 @@ public class Menu implements ApplicationMenu {
                 }
                 break;
 
-                case 5:{}
+                case 5:
+                    scanner.nextLine();
+                    System.out.println("Enter name of CrewMemmer");
+                    String name=scanner.nextLine();
+                    List <CrewMember> crewMemberList =crewServiceAction.findAllCrewMembers();
+                    CrewMemberFactory crewMemberFactory=new CrewMemberFactory();
+                    CrewMember crewMemberToDelete;
+                    for(CrewMember cr:crewMemberList){
+                        if(cr.getName().equals(name)){
+                            crewMemberToDelete=crewMemberFactory.create(cr);
+                            System.out.println("This crewMember was deleted: "
+                                    + crewServiceAction.deleteCrewMemeber(crewMemberToDelete));
+                        }
+                    }
+                    break;
                 case 6:exit=true;
                 default:choise=printAvailableOptions();
 

@@ -11,11 +11,16 @@ import com.epam.jwd.core_final.factory.impl.CrewMemberFactory;
 import com.epam.jwd.core_final.service.CrewService;
 import com.epam.jwd.core_final.util.CrewMemberReaderUtil;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class CrewServiceAction implements CrewService {
@@ -48,8 +53,6 @@ public class CrewServiceAction implements CrewService {
 
     @Override
     public Optional<CrewMember> findCrewMemberByCriteria(CrewMemberCriteria criteria) {
-
-
         return findAllCrewMembers().stream().filter(crewMember -> crewMember.equalse(criteria)).findFirst();
     }
 
@@ -93,7 +96,20 @@ public class CrewServiceAction implements CrewService {
 
     public boolean deleteCrewMemeber(CrewMember crewMember){
         String linesFromFile[]= CrewMemberReaderUtil.loadCrewMember();
+        String search =crewMember.getRole().getId().toString()+","+ crewMember.getName()+","+crewMember.getRank().getId().toString();
 
+        String replace = "NULL";
+        Charset charset = Charset.forName("cp1251");
+        Path path= Paths.get("C:\\_work\\crew");
+
+        try {
+            Files.write(path,
+                    Collections.singleton(new String(Files.readAllBytes(path), charset).replace(search, replace)));
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
 }
