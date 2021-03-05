@@ -7,6 +7,8 @@ import com.epam.jwd.core_final.criteria.SpaceshipCriteria;
 import com.epam.jwd.core_final.domain.*;
 import com.epam.jwd.core_final.exception.UnasignedCrewMemberException;
 import com.epam.jwd.core_final.factory.impl.CrewMemberFactory;
+import com.epam.jwd.core_final.missionOnJSON.ReadFromJSONFile;
+import com.epam.jwd.core_final.missionOnJSON.WriteInJSONFile;
 import com.epam.jwd.core_final.service.impl.CrewServiceAction;
 import com.epam.jwd.core_final.service.impl.SpacemapServiceAction;
 import com.epam.jwd.core_final.service.impl.SpaceshipServiceAction;
@@ -36,7 +38,8 @@ public class Menu implements ApplicationMenu {
                 " 3. See all planets\n " +
                 "4. Make new mission\n " +
                 "5.Delete crew member\n " +
-                "6. Exit");
+                "6. Read mission from file\n" +
+                "7. Exit");
         while(choise==0){
             try {
                 choise=scanner.nextInt();
@@ -146,6 +149,7 @@ public class Menu implements ApplicationMenu {
                             planetToP,planetFromP);
                     nassaContext.getFlightMissions().add(flightMission);
                     System.out.println(flightMission.toString());
+                    WriteInJSONFile.WriteInJSONFile(flightMission);
                 }
                 else{
                     System.out.println("One of those planets doesn't exist");
@@ -167,13 +171,22 @@ public class Menu implements ApplicationMenu {
                         }
                     }
                     break;
-                case 6:exit=true;
-                default:choise=printAvailableOptions();
 
+                case 6:
+                    try {
+                        ReadFromJSONFile.readJsonSimpleDemo();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    break;
+
+                    case 7:exit=true;
+                        return null;
             }
-            if(choise==6) exit=true;
+            if(choise==7)  return null;
+
             choise=printAvailableOptions();
-            if(choise==6) exit=true;
+            if(choise==7) exit=true;
         }
 
         return null;
